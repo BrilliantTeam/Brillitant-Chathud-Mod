@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "fallout-helper-mod",
+  "version": "${version}",
+  "name": "Fallout Helper Mod",
+  "description": "",
+  "authors": [
+    "patyhank"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/fallout-helper-mod/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      {
+        "adapter": "kotlin",
+        "value": "net.patyhank.fallouthelpermod.FalloutHelperMod"
+      }
+    ]
+  },
+  "mixins": [
+    "fallout-helper-mod.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": "*",
+    "minecraft": ">=1.19",
+    "fabric-language-kotlin": "*"
+  }
+}
