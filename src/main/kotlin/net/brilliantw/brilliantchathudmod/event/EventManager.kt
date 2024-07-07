@@ -2,13 +2,13 @@
 Code From OKTW Galaxy Project
  */
 
-package net.patyhank.fallouthelpermod.event
+package net.brilliantw.brilliantchathudmod.event
 
 import kotlinx.coroutines.*
 import net.minecraft.util.thread.ThreadExecutor
-import net.patyhank.fallouthelpermod.FalloutHelperMod
-import net.patyhank.fallouthelpermod.event.annotation.EventListener
-import net.patyhank.fallouthelpermod.event.type.Event
+import net.brilliantw.brilliantchathudmod.MainEntrypoint
+import net.brilliantw.brilliantchathudmod.event.annotation.EventListener
+import net.brilliantw.brilliantchathudmod.event.type.Event
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.CopyOnWriteArrayList
 import kotlin.reflect.KClass
@@ -27,7 +27,7 @@ class EventManager(private val clientThread: ThreadExecutor<*>) :
     CoroutineScope by CoroutineScope(Dispatchers.Default + SupervisorJob()) {
     companion object {
         @JvmStatic
-        fun <T : Event> safeEmit(event: T) = FalloutHelperMod.helper?.eventManager?.emit(event) ?: event
+        fun <T : Event> safeEmit(event: T) = MainEntrypoint.entrypoint?.eventManager?.emit(event) ?: event
     }
 
     private val asyncEventListeners =

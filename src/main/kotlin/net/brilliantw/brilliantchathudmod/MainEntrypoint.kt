@@ -1,4 +1,4 @@
-package net.patyhank.fallouthelpermod
+package net.brilliantw.brilliantchathudmod
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
@@ -6,11 +6,11 @@ import kotlinx.coroutines.asCoroutineDispatcher
 import net.fabricmc.api.ClientModInitializer
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents
 import net.minecraft.client.MinecraftClient
-import net.patyhank.fallouthelpermod.chat.ChatChecker
-import net.patyhank.fallouthelpermod.event.EventManager
+import net.brilliantw.brilliantchathudmod.chat.ChatChecker
+import net.brilliantw.brilliantchathudmod.event.EventManager
 import kotlin.coroutines.CoroutineContext
 
-class FalloutHelperMod : ClientModInitializer, CoroutineScope {
+class MainEntrypoint : ClientModInitializer, CoroutineScope {
     private val job = SupervisorJob()
     lateinit var client: MinecraftClient
         private set
@@ -22,12 +22,12 @@ class FalloutHelperMod : ClientModInitializer, CoroutineScope {
         get() = job + client.asCoroutineDispatcher()
 
     companion object {
-        var helper: FalloutHelperMod? = null
+        var entrypoint: MainEntrypoint? = null
             private set
     }
 
     override fun onInitializeClient() {
-        helper = this
+        entrypoint = this
         ClientLifecycleEvents.CLIENT_STARTED.register(ClientLifecycleEvents.ClientStarted {
             client = it
             eventManager = EventManager(client)

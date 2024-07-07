@@ -1,28 +1,28 @@
-package net.patyhank.fallouthelpermod.screen
+package net.brilliantw.brilliantchathudmod.screen
 
+import net.minecraft.client.gui.DrawContext
 import net.minecraft.client.gui.screen.ChatScreen
 import net.minecraft.client.gui.widget.ButtonWidget
-import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.text.HoverEvent
 import net.minecraft.text.Style
 import net.minecraft.text.Text
 import net.minecraft.util.Formatting
-import net.patyhank.fallouthelpermod.FalloutHelperMod
-import net.patyhank.fallouthelpermod.chat.ChatChecker
+import net.brilliantw.brilliantchathudmod.MainEntrypoint
+import net.brilliantw.brilliantchathudmod.chat.ChatChecker
 
 class ExtendChatScreen(originalChatText: String?) : ChatScreen(originalChatText) {
     private var btns = arrayListOf<ButtonWidget>()
 
     override fun init() {
         btns = arrayListOf()
-        val chatCategory = FalloutHelperMod.helper?.chatChecker?.chatCategory
+        val chatCategory = MainEntrypoint.entrypoint?.chatChecker?.chatCategory
         var i = 0
         ChatChecker.chatSort.forEach { key ->
             val hud = chatCategory?.get(key)!!
 
-            btns.add(ButtonWidget(8 + (i * 30), height - 36, 30, 12, Text.literal(key).apply {
+            val widget = ButtonWidget.builder(Text.literal(key).apply {
                 if (key == ChatChecker.currentCategoryName) style = Style.EMPTY.withColor(Formatting.DARK_GREEN)
-            }) {
+            }) { wid: ButtonWidget ->
                 ChatChecker.currentCategory = hud
                 ChatChecker.currentCategoryName = key
                 for (btn in btns) {
@@ -30,10 +30,17 @@ class ExtendChatScreen(originalChatText: String?) : ChatScreen(originalChatText)
                         style = Style.EMPTY.withColor(Formatting.WHITE)
                     }
                 }
-                it.message = Text.literal(key).fillStyle(Style.EMPTY.withColor(Formatting.DARK_GREEN))
-            }.apply {
-                visible = true
-            })
+                wid.message = Text.literal(key).fillStyle(Style.EMPTY.withColor(Formatting.DARK_GREEN))
+                focused = chatField
+            }
+                .size(30, 12)
+                .position(8 + (i * 30), height - 36)
+                .build()
+                .apply {
+                    visible = true
+                }
+
+            btns.add(widget)
             i++
         }
         for (btn in btns) {
@@ -52,7 +59,7 @@ class ExtendChatScreen(originalChatText: String?) : ChatScreen(originalChatText)
         val prefix = ChatChecker.chatPrefix[ChatChecker.currentCategoryName]
             ?: return if (ChatChecker.chatPrefix.values.contains(chatText[0].toString())) {
                 val first = ChatChecker.chatPrefix.filter { it.value == chatText[0].toString() }.keys.first()
-                val chatCategory = FalloutHelperMod.helper?.chatChecker?.chatCategory
+                val chatCategory = MainEntrypoint.entrypoint?.chatChecker?.chatCategory
                 ChatChecker.currentCategory = chatCategory?.get(first)!!
                 ChatChecker.currentCategoryName = first
                 super.sendMessage(chatText, addToHistory)
@@ -70,7 +77,19 @@ class ExtendChatScreen(originalChatText: String?) : ChatScreen(originalChatText)
         return super.sendMessage(prefix + chatText, addToHistory)
     }
 
-    override fun render(matrices: MatrixStack?, mouseX: Int, mouseY: Int, delta: Float) {
-        super.render(matrices, mouseX, mouseY, delta)
+    override fun render(context: DrawContext?, mouseX: Int, mouseY: Int, delta: Float) {
+        super.render(context, mouseX, mouseY, delta)
+    }
+
+    override fun charTyped(chr: Char, modifiers: Int): Boolean {
+        if (focused != chatField)
+            chatField.charTyped(chr, modifiers);
+        return super.charTyped(chr, modifiers)
+    }
+
+    override fun keyPressed(keyCode: Int, scanCode: Int, modifiers: Int): Boolean {
+        if (focused != chatField)
+            chatField.keyPressed(keyCode, scanCode, modifiers);
+        return super.keyPressed(keyCode, scanCode, modifiers)
     }
 }

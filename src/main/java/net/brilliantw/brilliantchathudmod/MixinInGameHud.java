@@ -1,9 +1,9 @@
-package net.patyhank.fallouthelpermod.mixin;
+package net.brilliantw.brilliantchathudmod;
 
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.ChatHud;
 import net.minecraft.client.gui.hud.InGameHud;
-import net.minecraft.client.util.math.MatrixStack;
-import net.patyhank.fallouthelpermod.chat.ChatChecker;
+import net.brilliantw.brilliantchathudmod.chat.ChatChecker;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -18,14 +18,14 @@ public class MixinInGameHud {
     @Final
     private ChatHud chatHud;
 
-    @Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/hud/ChatHud;render(Lnet/minecraft/client/util/math/MatrixStack;I)V"))
-    private void chatHud(ChatHud instance, MatrixStack matrices, int currentTick) {
+    @Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/hud/ChatHud;render(Lnet/minecraft/client/gui/DrawContext;III)V"))
+    private void chatHud(ChatHud instance, DrawContext context, int currentTick, int x, int y) {
         ChatHud hud = ChatChecker.Companion.getCurrentCategory();
         if (hud == null) {
             return;
         }
 
-        hud.render(matrices, currentTick);
+        hud.render(context, currentTick, x, y);
     }
 
 

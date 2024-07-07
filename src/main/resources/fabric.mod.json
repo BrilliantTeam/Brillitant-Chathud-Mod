@@ -1,11 +1,12 @@
 {
   "schemaVersion": 1,
-  "id": "fallout-helper-mod",
+  "id": "brilliant-chathud-mod",
   "version": "${version}",
-  "name": "Fallout Helper Mod",
+  "name": "Brilliant Chathut Mod",
   "description": "",
   "authors": [
-    "patyhank"
+    "patyhank (original mod author for fallout helper mod)",
+    "Brilliant Team."
   ],
   "contact": {},
   "license": "MIT",
@@ -15,12 +16,12 @@
     "client": [
       {
         "adapter": "kotlin",
-        "value": "net.patyhank.fallouthelpermod.FalloutHelperMod"
+        "value": "net.brilliantw.brilliantchathudmod.MainEntrypoint"
       }
     ]
   },
   "mixins": [
-    "fallout-helper-mod.mixins.json"
+    "brilliant-chathud-mod.json"
   ],
   "depends": {
     "fabricloader": "*",

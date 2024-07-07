@@ -1,4 +1,4 @@
-package net.patyhank.fallouthelpermod.event.type
+package net.brilliantw.brilliantchathudmod.event.type
 
 open class CancelableEvent : Event {
     var cancel = false

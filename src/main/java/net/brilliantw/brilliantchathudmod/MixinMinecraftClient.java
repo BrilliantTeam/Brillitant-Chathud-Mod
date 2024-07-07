@@ -1,9 +1,8 @@
-package net.patyhank.fallouthelpermod.mixin;
+package net.brilliantw.brilliantchathudmod;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.gui.screen.multiplayer.ChatPreviewWarningScreen;
-import net.patyhank.fallouthelpermod.screen.ExtendChatScreen;
+import net.brilliantw.brilliantchathudmod.screen.ExtendChatScreen;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -20,12 +19,5 @@ public abstract class MixinMinecraftClient {
     private void openChatScreen(String text, CallbackInfo ci) {
         ci.cancel();
         setScreen(new ExtendChatScreen(text));
-    }
-
-    @Inject(method = "setScreen", cancellable = true, at = @At("HEAD"))
-    private void onSetScreen(Screen screen, CallbackInfo ci) {
-        if (screen instanceof ChatPreviewWarningScreen) {
-            ci.cancel();
-        }
     }
 }

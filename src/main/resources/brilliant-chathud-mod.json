@@ -9,7 +9,6 @@
     "IMixinInGameHud",
     "MixinChatHud",
     "MixinInGameHud",
-    "MixinKeyboard",
     "MixinMessageHandler",
     "MixinMinecraftClient"
   ],

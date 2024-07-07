@@ -1,4 +1,4 @@
-package net.patyhank.fallouthelpermod.event.type
+package net.brilliantw.brilliantchathudmod.event.type
 
 import net.minecraft.text.Text
 

@@ -1,4 +1,4 @@
-package net.patyhank.fallouthelpermod.mixin;
+package net.brilliantw.brilliantchathudmod;
 
 import net.minecraft.client.gui.hud.ChatHud;
 import net.minecraft.client.gui.hud.InGameHud;

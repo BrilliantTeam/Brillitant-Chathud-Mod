@@ -1,4 +1,4 @@
-package net.patyhank.fallouthelpermod.mixin;
+package net.brilliantw.brilliantchathudmod;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.hud.ChatHud;
@@ -21,11 +21,6 @@ public class MixinMessageHandler {
     @Redirect(method = "processChatMessageInternal", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/hud/ChatHud;addMessage(Lnet/minecraft/text/Text;Lnet/minecraft/network/message/MessageSignatureData;Lnet/minecraft/client/gui/hud/MessageIndicator;)V"))
     private void procMsg(ChatHud instance, Text message, MessageSignatureData signature, MessageIndicator indicator) {
         ((IMixinInGameHud) client.inGameHud).getOringalChatHud().addMessage(message, signature, indicator);
-    }
-
-    @Redirect(method = "processProfilelessMessage", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/hud/ChatHud;addMessage(Lnet/minecraft/text/Text;)V"))
-    private void procMsg(ChatHud instance, Text message) {
-        ((IMixinInGameHud) client.inGameHud).getOringalChatHud().addMessage(message);
     }
 
     @Redirect(method = "onGameMessage", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/hud/ChatHud;addMessage(Lnet/minecraft/text/Text;)V"))

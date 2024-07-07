@@ -1,12 +1,12 @@
-package net.patyhank.fallouthelpermod.mixin;
+package net.brilliantw.brilliantchathudmod;
 
+import net.brilliantw.brilliantchathudmod.screen.hud.ExtendChatHud;
 import net.minecraft.client.gui.hud.ChatHud;
 import net.minecraft.client.gui.hud.MessageIndicator;
 import net.minecraft.network.message.MessageSignatureData;
 import net.minecraft.text.Text;
-import net.patyhank.fallouthelpermod.event.EventManager;
-import net.patyhank.fallouthelpermod.event.type.ServerMessageEvent;
-import net.patyhank.fallouthelpermod.screen.hud.ExtendChatHud;
+import net.brilliantw.brilliantchathudmod.event.EventManager;
+import net.brilliantw.brilliantchathudmod.event.type.ServerMessageEvent;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
