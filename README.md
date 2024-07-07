@@ -1,7 +1,10 @@
 # 聊天欄快捷切換模組
 透過這個客戶端模組，玩家可以更方便的切換頻道發言與讀取，
+
 倘若不知道如何使用模組，請 Google 查詢，
+
 使用此模組前，需要安裝 [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api) 與 [Fabric Language Kotlin](https://www.curseforge.com/minecraft/mc-mods/fabric-language-kotlin) ，
+
 建議使用環境為 <span class="label label-info">Java 1.20.1</span> ，其他版本未經測試。
 
 ## 注意事項
