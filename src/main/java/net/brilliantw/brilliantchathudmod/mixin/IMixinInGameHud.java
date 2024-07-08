@@ -1,4 +1,4 @@
-package net.brilliantw.brilliantchathudmod;
+package net.brilliantw.brilliantchathudmod.mixin;
 
 import net.minecraft.client.gui.hud.ChatHud;
 import net.minecraft.client.gui.hud.InGameHud;
