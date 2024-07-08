@@ -5,7 +5,7 @@
 
 使用此模組前，需要安裝 [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api) 與 [Fabric Language Kotlin](https://www.curseforge.com/minecraft/mc-mods/fabric-language-kotlin) ，
 
-建議使用環境為 <span class="label label-info">Java 1.20.1</span> ，其他版本未經測試。
+建議使用環境為 <span class="label label-info">Java 1.20 - 1.20.4 版本</span> 。
 
 ## 注意事項
 1. 能用就用，不會用也不要找我們。
