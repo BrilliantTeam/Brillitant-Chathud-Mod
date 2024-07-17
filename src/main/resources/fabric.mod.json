@@ -3,14 +3,16 @@
   "id": "brilliant-chathud-mod",
   "version": "${version}",
   "name": "Brilliant Chathut Mod",
-  "description": "",
+  "description": "## 注意事項\n1. 能用就用，不會用也不要找我們。\n2. 不定期更新，隨緣接受新功能請求。\n3. 【私訊】為全部選項都可見，不是 BUG。\n4. 此模組已經原作者授權修改，原為 fallout-helper-mod。\n5. 有能力的玩家可自行 Fork 此模組專案進行修改，歡迎 PR。",
   "authors": [
-    "patyhank (original mod author for fallout helper mod)",
     "Brilliant Team."
   ],
-  "contact": {},
+  "contact": {
+    "homepage": "https://www.brilliantw.net/",
+    "issues": "https://github.com/BrilliantTeam/Brillitant-Chathud-Mod/issues"
+  },
   "license": "MIT",
-  "icon": "assets/fallout-helper-mod/icon.png",
+  "icon": "assets/icon.png",
   "environment": "client",
   "entrypoints": {
     "client": [
@@ -27,5 +29,14 @@
     "fabricloader": "*",
     "minecraft": ">=1.19",
     "fabric-language-kotlin": "*"
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.brilliant": "https://www.brilliantw.net/",
+        "modmenu.discord": "https://discord.gg/5MHGpAFGEN",
+        "modmenu.github": "https://github.com/BrilliantTeam/Brillitant-Chathud-Mod"
+      }
+    }
   }
 }
